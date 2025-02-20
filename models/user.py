@@ -13,11 +13,15 @@ class User:
 
         # Load existing data if available
         data = FileHandler.load_user()
-        if data:
-            self.name = data["name"]
-            self.budget.budgets = data["budget"]
+
+        # Find the user data matching the input name
+        user_data = next((user for user in data if user["name"] == self.name), None)
+        if user_data:
+            self.budget.budgets = user_data["budget"]
             self.income = TransactionHandler.load_transactions("income.csv")
             self.expenses = TransactionHandler.load_transactions("expenses.csv")
+        else:
+            print(f"User {self.name} does not exist, creating a new profile.")
 
     def add_income(self, category, amount):
         """Add an income entry."""

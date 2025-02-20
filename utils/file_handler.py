@@ -10,22 +10,40 @@ class FileHandler:
     def save_user(user):
         # Ensure the data directory exists
         os.makedirs("data", exist_ok=True)
-        
-        """Save user data to a JSON file."""
-        data = {
-            "name": user.name,
-            "budget": user.budget.budgets  # Save budget categories
-        }
-        with open("data/user_data.json", "w") as file:
-            json.dump(data, file, indent=4)
+
+        file_path = "data/user_data.json"
+
+        # Load existing users if the file exists
+        users = []
+        if os.path.exists(file_path):
+            with open(file_path, "r") as file:
+                users = json.load(file)
+
+        # Check if the user already exists
+        if any(user_data["name"] == user.name for user_data in users):
+            print(f"User {user.name} already exists.")
+        else:
+            # Add the new user to the list
+            user_data = {
+                "name": user.name,
+                "budget": user.budget.budgets  # Save budget categories
+            }
+            users.append(user_data)
+
+            # Save the updated list of users
+            with open(file_path, "w") as file:
+                json.dump(users, file, indent=4)
 
     @staticmethod
     def load_user():
         """Load user data from JSON file."""
-        if os.path.exists("data/user_data.json"):
-            with open("data/user_data.json", "r") as file:
+        file_path = "data/user_data.json"
+        if os.path.exists(file_path):
+            with open(file_path, "r") as file:
                 return json.load(file)
-        return None  # No user data exists
+        return []  # Return an empty list if no users are found
+
+
 
 class TransactionHandler:
     """Handles CSV-based income and expense storage."""
@@ -39,7 +57,6 @@ class TransactionHandler:
             for transaction in transaction_list:
                 print(f"Saving: Category = {transaction.category}, Amount = {transaction.amount}")  # Debug print
                 writer.writerow([transaction.category, transaction.amount])
-
 
     @staticmethod
     def load_transactions(filename):
