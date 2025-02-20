@@ -38,6 +38,12 @@ def main():
             print("\nCurrent Budget:")
             for category, amount in user.budget.budgets.items():
                 print(f"{category}: ${amount}")
+            print("\nIncome:")
+            for category, amount in user.income.items():
+                print(f"{category}: ${amount}")
+            print("\nExpenses:")
+            for category, amount in user.expenses.items():
+                print(f"{category}: ${amount}")
 
         elif choice == "5":
             print("Exiting Budget Manager. Data saved successfully.")

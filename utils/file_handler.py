@@ -1,7 +1,5 @@
 import json
-import csv
 import os
-from models.transaction import Expense
 
 class FileHandler:
     """Handles reading and writing user data."""
@@ -14,25 +12,21 @@ class FileHandler:
         file_path = "data/user_data.json"
 
         # Load existing users if the file exists
-        users = []
+        users = {}
         if os.path.exists(file_path):
             with open(file_path, "r") as file:
                 users = json.load(file)
 
-        # Check if the user already exists
-        if any(user_data["name"] == user.name for user_data in users):
-            print(f"User {user.name} already exists.")
-        else:
-            # Add the new user to the list
-            user_data = {
-                "name": user.name,
-                "budget": user.budget.budgets  # Save budget categories
-            }
-            users.append(user_data)
+        # Add or update the user data
+        users[user.name] = {
+            "budget": user.budget.budgets,
+            "income": user.income,
+            "expense": user.expenses
+        }
 
-            # Save the updated list of users
-            with open(file_path, "w") as file:
-                json.dump(users, file, indent=4)
+        # Save the updated list of users
+        with open(file_path, "w") as file:
+            json.dump(users, file, indent=4)
 
     @staticmethod
     def load_user():
@@ -41,41 +35,4 @@ class FileHandler:
         if os.path.exists(file_path):
             with open(file_path, "r") as file:
                 return json.load(file)
-        return []  # Return an empty list if no users are found
-
-
-
-class TransactionHandler:
-    """Handles CSV-based income and expense storage."""
-
-    @staticmethod
-    def save_transaction(filename, transaction_list):
-        """Save income or expenses to a CSV file."""
-        with open(f"data/{filename}", "w", newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow(["Category", "Amount"])  # Header row
-            for transaction in transaction_list:
-                print(f"Saving: Category = {transaction.category}, Amount = {transaction.amount}")  # Debug print
-                writer.writerow([transaction.category, transaction.amount])
-
-    @staticmethod
-    def load_transactions(filename):
-        transactions = []
-        file_path = f"data/{filename}"
-        
-        if not os.path.exists(file_path):  # Handle missing files
-            return []
-
-        try:
-            with open(file_path, "r", newline="") as file:
-                reader = csv.DictReader(file)
-                for row in reader:
-                    try:
-                        amount = float(row["Amount"])  # Attempt to convert amount to float
-                        transactions.append(Expense(row["Category"], amount))
-                    except ValueError:  # Handle cases where Amount is not a valid float
-                        print(f"Skipping invalid row: {row}")
-            return transactions
-        except Exception as e:
-            print(f"Error loading transactions from {filename}: {e}")
-            return []
+        return {}  # Return an empty dict if no users are found

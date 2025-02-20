@@ -1,6 +1,5 @@
 from models.budget import Budget
-from models.transaction import Income, Expense
-from utils.file_handler import FileHandler, TransactionHandler
+from utils.file_handler import FileHandler
 
 class User:
     """Class to manage user budget information"""
@@ -8,32 +7,38 @@ class User:
     def __init__(self, name):
         self.name = name
         self.budget = Budget()
-        self.income = []
-        self.expenses = []
+        self.income = {}
+        self.expenses = {}
 
         # Load existing data if available
         data = FileHandler.load_user()
 
         # Find the user data matching the input name
-        user_data = next((user for user in data if user["name"] == self.name), None)
+        user_data = data.get(self.name, None)
         if user_data:
             self.budget.budgets = user_data["budget"]
-            self.income = TransactionHandler.load_transactions("income.csv")
-            self.expenses = TransactionHandler.load_transactions("expenses.csv")
+            self.income = user_data["income"]
+            self.expenses = user_data["expense"]
         else:
             print(f"User {self.name} does not exist, creating a new profile.")
 
     def add_income(self, category, amount):
         """Add an income entry."""
-        self.income.append(Income(category, amount))
-        TransactionHandler.save_transaction("income.csv", self.income)
+        if category in self.income:
+            self.income[category] += amount
+        else:
+            self.income[category] = amount
+        self.save_user_data()
 
     def add_expense(self, category, amount):
         """Add an expense entry."""
         if category not in self.budget.budgets:
             print(f"Warning: No budget set for {category}.")
-        self.expenses.append(Expense(category, amount))
-        TransactionHandler.save_transaction("expenses.csv", self.expenses)
+        if category in self.expenses:
+            self.expenses[category] += amount
+        else:
+            self.expenses[category] = amount
+        self.save_user_data()
 
     def save_user_data(self):
         """Save user profile and budget categories."""

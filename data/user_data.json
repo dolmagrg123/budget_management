@@ -1,17 +1,25 @@
-[
-    {
-        "name": "Dolma",
-        "budget": {
-            "s": 111.0,
-            "Rent": 1000.0,
-            "Food": 500.0,
-            "aa": 500.0
-        }
-    },
-    {
-        "name": "jon",
+{
+    "Dolma": {
         "budget": {
             "Food": 1000.0
+        },
+        "income": {
+            "Salary": 10000.0
+        },
+        "expense": {
+            "Food": 100.0,
+            "Rent": 750.0
+        }
+    },
+    "Jon": {
+        "budget": {
+            "Food": 500.0
+        },
+        "income": {
+            "Salary": 1000.0
+        },
+        "expense": {
+            "Food": 100.0
         }
     }
-]
+}
