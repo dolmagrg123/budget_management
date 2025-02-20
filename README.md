@@ -13,21 +13,12 @@ The `Transaction` class represents a financial transaction (either income or exp
 
 ## Methods
 
-### `__init__(self, amount, category, transaction_type, date=None)`
+### `__init__(self, amount, category, date=None)`
 Initializes a transaction with the following attributes:
 - **`amount`**: The monetary value of the transaction (float or int).
 - **`category`**: The category or label for the transaction (e.g., "Salary", "Food").
-- **`transaction_type`**: Either "income" or "expense".
 - **`date`** (optional): The date of the transaction. Defaults to the current date if not provided.
 
-### `__str__(self)`
-Returns a string representation of the transaction, including:
-- Date/time of the transaction.
-- Type ("income" or "expense").
-- Category.
-- Amount, formatted to two decimal places.
-
----
 
 ## Example
 
