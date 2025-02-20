@@ -6,8 +6,8 @@ class FileHandler:
 
     @staticmethod
     def save_user(user):
-        # Ensure the data directory exists
-        os.makedirs("data", exist_ok=True)
+        """Save user data to JSON file."""
+        os.makedirs("data", exist_ok=True)  # Create 'data' directory if not exists
 
         file_path = "data/user_data.json"
 
@@ -24,7 +24,7 @@ class FileHandler:
             "expense": user.expenses
         }
 
-        # Save the updated list of users
+        # Save the updated list of users to the file
         with open(file_path, "w") as file:
             json.dump(users, file, indent=4)
 
