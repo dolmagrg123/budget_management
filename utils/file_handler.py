@@ -7,6 +7,9 @@ class FileHandler:
 
     @staticmethod
     def save_user(user):
+        # Ensure the data directory exists
+        os.makedirs("data", exist_ok=True)
+        
         """Save user data to a JSON file."""
         data = {
             "name": user.name,
