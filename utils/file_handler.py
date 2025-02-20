@@ -1,6 +1,7 @@
 import json
 import csv
 import os
+from models.transaction import Expense
 
 class FileHandler:
     """Handles reading and writing user data."""
@@ -34,17 +35,30 @@ class TransactionHandler:
         """Save income or expenses to a CSV file."""
         with open(f"data/{filename}", "w", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(["Category", "Amount"])  # Header
+            writer.writerow(["Category", "Amount"])  # Header row
             for transaction in transaction_list:
+                print(f"Saving: Category = {transaction.category}, Amount = {transaction.amount}")  # Debug print
                 writer.writerow([transaction.category, transaction.amount])
+
 
     @staticmethod
     def load_transactions(filename):
-        """Load transactions from CSV file."""
         transactions = []
-        if os.path.exists(f"data/{filename}"):
-            with open(f"data/{filename}", "r") as file:
+        file_path = f"data/{filename}"
+        
+        if not os.path.exists(file_path):  # Handle missing files
+            return []
+
+        try:
+            with open(file_path, "r", newline="") as file:
                 reader = csv.DictReader(file)
                 for row in reader:
-                    transactions.append(Expense(row["Category"], float(row["Amount"])))
-        return transactions
+                    try:
+                        amount = float(row["Amount"])  # Attempt to convert amount to float
+                        transactions.append(Expense(row["Category"], amount))
+                    except ValueError:  # Handle cases where Amount is not a valid float
+                        print(f"Skipping invalid row: {row}")
+            return transactions
+        except Exception as e:
+            print(f"Error loading transactions from {filename}: {e}")
+            return []
