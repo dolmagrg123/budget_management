@@ -1,48 +1,62 @@
-# budget_management
+```markdown
+# Budget Management App
 
-Here’s a more concise version of the documentation in **README** format:
+This is a simple command-line budget management application built with Python. It allows users to set budgets for different categories, track income and expenses, and view their overall budget status.
 
----
+## Features
 
-# Transaction Class Documentation
+*   **Set Budget:** Define budget limits for various categories (e.g., food, rent, entertainment).
+*   **Add Income:** Record income entries with category and amount.
+*   **Add Expense:** Record expense entries with category and amount.
+*   **Show Budget:** Display the current budget status, including budget limits, income, expenses, and remaining balance for each category.
+*   **Data Persistence (Suggested):** *(Not yet implemented)* In future versions, the application will save budget data to a file (e.g., CSV, JSON) so that it persists between sessions.
 
-## Overview
-The `Transaction` class represents a financial transaction (either income or expense) and includes details like the amount, category, type, and date.
+## Getting Started
 
----
+1.  **Prerequisites:** Python 3.x
 
-## Methods
+2.  **Installation:**
 
-### `__init__(self, amount, category, date=None)`
-Initializes a transaction with the following attributes:
-- **`amount`**: The monetary value of the transaction (float or int).
-- **`category`**: The category or label for the transaction (e.g., "Salary", "Food").
-- **`date`** (optional): The date of the transaction. Defaults to the current date if not provided.
+    ```bash
+    # No installation steps needed as it's a simple script
+    # But you can create a virtual environment (recommended):
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
+3.  **Running the App:**
 
-## Example
+    ```bash
+    python main.py
+    ```
 
-```python
-from transaction import Transaction
+## Usage
 
-# Create a transaction
-transaction = Transaction(1000, "Salary", "income")
-
-# Print the transaction
-print(str(transaction))  # Output: 2025-02-06 12:34:56 | Income | Salary | $1000.00
-```
-
----
-
-This is a quick overview of the `Transaction` class and how to use it in the budget tracker project.
-
-
-# Budget Class Documentation
+1.  Run the application using the command above.
+2.  Follow the on-screen menu to interact with the budget manager.
+3.  Enter your name when prompted to begin.
+4.  Use the numbered options to navigate through the menu and manage your budget.
 
 
-This class represent the budget user sets for each of their categories.
+
+## Code Examples
+
+*   **Setting a budget:**
+
+    ```python
+    user.budget.set_budget("Food", 300)
+    ```
+
+*   **Adding income:**
+
+    ```python
+    user.add_income("Salary", 2000)
+    ```
+
+*   **Adding an expense:**
+
+    ```python
+    user.add_expense("Food", 50)
+    ```
 
 
-# User Class Documentation
-
-This class represent each user and their name
