@@ -6,7 +6,7 @@ class User:
     def __init__(self, name):
         self.name = name
         self.budget = Budget()
-        self.income = []
+        self.income = [] # create a list to add income category and amount
         self.expenses = []
 
     def add_income(self,category,amount):
