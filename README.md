@@ -7,7 +7,7 @@ Here’s a more concise version of the documentation in **README** format:
 # Transaction Class Documentation
 
 ## Overview
-The `Transaction` class represents a financial transaction (either income or expense) and includes details like the amount, category, type, and date. It also provides a method to display a formatted string of the transaction.
+The `Transaction` class represents a financial transaction (either income or expense) and includes details like the amount, category, type, and date.
 
 ---
 
@@ -35,3 +35,14 @@ print(str(transaction))  # Output: 2025-02-06 12:34:56 | Income | Salary | $1000
 ---
 
 This is a quick overview of the `Transaction` class and how to use it in the budget tracker project.
+
+
+# Budget Class Documentation
+
+
+This class represent the budget user sets for each of their categories.
+
+
+# User Class Documentation
+
+This class represent each user and their name
