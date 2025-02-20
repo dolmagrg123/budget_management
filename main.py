@@ -1,9 +1,9 @@
 from models.user import User
 
 def main():
+    """Main function to manage the budget app"""
     user_name = input("Enter your name: ")
     user = User(user_name)
-
 
     while True:
         print("\nBudget Management Menu:")
@@ -18,8 +18,9 @@ def main():
         if choice == "1":
             category = input("Enter category name: ")
             amount = float(input("Enter budget amount: "))
-            user.budget.set_budget(category, amount)       
-            print(f"Budget for {category} set to {amount}")  
+            user.budget.set_budget(category, amount)
+            user.save_user_data()
+            print(f"Budget for {category} set to {amount}")
 
         elif choice == "2":
             category = input("Enter income category: ")
@@ -39,12 +40,12 @@ def main():
                 print(f"{category}: ${amount}")
 
         elif choice == "5":
-            print("Exiting Budget Manager")
+            print("Exiting Budget Manager. Data saved successfully.")
+            user.save_user_data()
             break
 
         else:
             print("Invalid choice. Please select a valid option.")
 
-            
 if __name__ == "__main__":
     main()
