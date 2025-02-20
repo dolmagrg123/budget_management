@@ -1,19 +1,16 @@
-from datetime import datetime
+
 
 class Transaction:
-    def __init__(self, amount, category, date, notes):
+    def __init__(self, amount, category):
         self.amount = amount
         self.category = category
-        self.date = date or datetime.now()
-        self.notes = notes
-
 
 class Income(Transaction):
     """Class to handle Income entries"""
-    def __init__(self, category, amount, date, notes):
-        super().__init__(category, amount, date, notes)
+    def __init__(self, category, amount):
+        super().__init__(category, amount)
 
 class Expense(Transaction):
     """Class to handle Expense entries"""
-    def __init__(self, category, amount, date, notes):
-        super().__init__(category, amount, date, notes)
+    def __init__(self, category, amount):
+        super().__init__(category, amount)
