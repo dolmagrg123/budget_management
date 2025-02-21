@@ -1,22 +1,23 @@
 {
     "Dolma": {
         "budget": {
-            "Food": 1000.0,
+            "Food": 10000.0,
             "Rent": 1200.0,
             "Entertainment": 300.0,
             "Transportation": 200.0,
             "Healthcare": 150.0,
             "Savings": 500.0,
-            "Clothing": 500.0
+            "Clothing": 1000.0
         },
         "income": {
             "Salary": 10000.0,
-            "Freelance": 1500.0,
+            "Freelance": 3500.0,
             "Investments": 300.0,
-            "Interest": 500.0
+            "Interest": 500.0,
+            "RSU": 10000.0
         },
         "expense": {
-            "Food": 300.0,
+            "Food": 410.0,
             "Rent": 750.0,
             "Utilities": 100.0,
             "Entertainment": 50.0,
