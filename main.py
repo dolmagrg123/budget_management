@@ -18,13 +18,13 @@ def main():
 # The match statement provides a more structured way to handle multiple conditions, 
 # making the code more readable and potentially faster for larger sets of conditions.
         if choice == "1":
-            set_budget_one(user)
+            set_budget(user)
 
         elif choice == "2":
-            add_income_two(user)
+            add_income(user)
 
         elif choice == "3":
-            add_expense_three(user)
+            add_expense(user)
 
         elif choice == "4":
             show_budget(user)
@@ -39,7 +39,7 @@ def main():
             print("Invalid choice. Please select a valid option.")
 
 
-def set_budget_one(user):
+def set_budget(user):
         # Set a budget category
         category = input("Enter category name: ")
         try:
@@ -51,7 +51,7 @@ def set_budget_one(user):
             print("Invalid amount. Please enter a valid number.")    
 
 
-def add_income_two(user):
+def add_income(user):
         # Add income entry
         category = input("Enter income category: ")
         try:
@@ -61,7 +61,7 @@ def add_income_two(user):
         except ValueError:
             print("Invalid amount. Please enter a valid number.")
 
-def add_expense_three(user):
+def add_expense(user):
         # Add expense entry
         category = input("Enter expense category: ")
         try:
