@@ -12,7 +12,7 @@ def main():
     while True:
         print("""
         Budget Management Menu:
-        1. Set Budget
+        1. Update Budget
         2. Add Income
         3. Add Expense
         4. Show Budget
@@ -41,6 +41,18 @@ def main():
         else:
             print("Invalid choice. Please select a valid option.")
 
+    # while True:
+    #     print("""
+    #     Budget Management Menu:
+    #     1. Create New Transaction
+    #     2. Update Existing Transaction
+    #     3. View All Transaction
+    #     4. Delete Existing Transaction
+    #     5. Exit
+    #     """)
+
+    #     choice = input("Select an option: ")
+
 
 def set_budget_option(user):
     # Set a budget category
@@ -48,7 +60,6 @@ def set_budget_option(user):
     try:
         amount = float(input("Enter budget amount: "))
         user.budget.set_budget(category, amount)
-        # user.save_user_data()
         print(f"Budget for {category} set to ${amount}")
     except ValueError:
         print("Invalid amount. Please enter a valid number.")    
