@@ -7,7 +7,7 @@
             "Transportation": 200.0,
             "Healthcare": 150.0,
             "Savings": 500.0,
-            "Clothing": 500.0
+            "Clothing": 1000.0
         },
         "income": {
             "Salary": 10000.0,
