@@ -6,13 +6,13 @@ from models.user import User
 
 def main():
     """Main function to manage the budget app"""
-    user_name = input("Enter your name: ")
+    user_name = input("Enter your username: ")
     user = User(user_name)
 
     while True:
         print("""
         Budget Management Menu:
-        1. Update Budget
+        1. Set Budget
         2. Add Income
         3. Add Expense
         4. Show Budget
@@ -40,18 +40,6 @@ def main():
              
         else:
             print("Invalid choice. Please select a valid option.")
-
-    # while True:
-    #     print("""
-    #     Budget Management Menu:
-    #     1. Create New Transaction
-    #     2. Update Existing Transaction
-    #     3. View All Transaction
-    #     4. Delete Existing Transaction
-    #     5. Exit
-    #     """)
-
-    #     choice = input("Select an option: ")
 
 
 def set_budget_option(user):
@@ -107,8 +95,6 @@ def show_budget_option(user):
                 print(f"{category}: ${amount}")
         else:
             print("No expense entries.")
-        
-
 
 
 if __name__ == "__main__":
