@@ -28,7 +28,7 @@ class User:
             self.income[category] += amount  # Add to existing income if category exists
         else:
             self.income[category] = amount  # Create new category if not exists
-        self.save_user_data()
+        # self.save_user_data()
 
     def add_expense(self, category, amount):
         """Add an expense entry."""
@@ -38,7 +38,7 @@ class User:
             self.expenses[category] += amount  # Add to existing expenses
         else:
             self.expenses[category] = amount  # Create new category if not exists
-        self.save_user_data()
+        # self.save_user_data()
 
     def save_user_data(self):
         """Save user profile and budget categories."""
