@@ -6,12 +6,14 @@
             "Entertainment": 300.0,
             "Transportation": 200.0,
             "Healthcare": 150.0,
-            "Savings": 500.0
+            "Savings": 500.0,
+            "Clothing": 500.0
         },
         "income": {
             "Salary": 10000.0,
             "Freelance": 1500.0,
-            "Investments": 300.0
+            "Investments": 300.0,
+            "Interest": 500.0
         },
         "expense": {
             "Food": 300.0,
