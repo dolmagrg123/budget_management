@@ -37,6 +37,16 @@ cd budget_management
 python main.py
 ```
 
+OR
+
+If you have docker installed:
+
+```bash
+docker pull dolmagrg123/budget_app:v1.0
+docker run -it dolmagrg123/budget_app:v1.0
+
+```
+
 2. Features available:
    - **Set Budget**: Set a budget for different categories (e.g., Food, Entertainment, etc.).
    - **Add Income/Expense**: Add income or expense transactions to a particular category.
