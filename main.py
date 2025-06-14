@@ -14,11 +14,11 @@ def main():
     while True:
         print("""
         Budget Management Menu:
-        1. Set Budget
-        2. Add Income
-        3. Add Expense
+        1. Set Budget (Create New/Update Existing)
+        2. Income (Create New/Update Existing)
+        3. Expense (Create New/Update Existing)
         4. Show Budget
-        5. Exit
+        5. Exit (Saves all Changes)
         """)
 
         choice = input("Select an option: ")
