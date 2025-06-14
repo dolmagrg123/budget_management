@@ -1,4 +1,6 @@
+import json
 from models.user import User
+from utils.file_handler import load_user_data
 
 # We can use a match (which is like case in some other languages) instead of if-elif in Python 3.10 and later.
 # The match statement provides a more structured way to handle multiple conditions, 
@@ -21,6 +23,7 @@ def main():
 
         choice = input("Select an option: ")
         if choice == "1":
+            list_existing_categories(user_name) # Added for context, but set_budget_option will not use the categories directly
             set_budget_option(user)
 
         elif choice == "2":
@@ -41,13 +44,32 @@ def main():
         else:
             print("Invalid choice. Please select a valid option.")
 
+def get_all_categories(user_data):
+ """
+ Extracts all unique income and expense categories from the loaded user data.
+
+ Args:
+ user_data (dict): The loaded user data from user_data.json.
+
+ Returns:
+ tuple: A tuple containing two sets: unique income categories and unique expense categories.
+ """
+ income_categories = set()
+ expense_categories = set()
+ for user_info in user_data.values():
+ if "income" in user_info:
+ income_categories.update(user_info["income"].keys())
+ if "expense" in user_info:
+ expense_categories.update(user_info["expense"].keys())
+ return income_categories, expense_categories
+
 
 def set_budget_option(user):
     # Set a budget category
     category = input("Enter category name for your budget: ")
     try:
         amount = float(input("Enter budget amount: "))
-        user.budget.set_budget(category, amount)
+ user.budget.set_budget(category, amount)
         print(f"Budget for {category} set to ${amount}")
     except ValueError:
         print("Invalid amount. Please enter a valid number.")    
@@ -58,7 +80,7 @@ def add_income_option(user):
     category = input("Enter income category: ")
     try:
         amount = float(input("Enter income amount: "))
-        user.add_income(category, amount)
+ user.add_income(category, amount)
         print(f"Income of ${amount} added under {category}")
     except ValueError:
         print("Invalid amount. Please enter a valid number.")
@@ -68,7 +90,7 @@ def add_expense_option(user):
     category = input("Enter expense category: ")
     try:
         amount = float(input("Enter expense amount: "))
-        user.add_expense(category, amount)
+ user.add_expense(category, amount)
         print(f"Expense of ${amount} added under {category}")
     except ValueError:
         print("Invalid amount. Please enter a valid number.")
@@ -95,6 +117,23 @@ def show_budget_option(user):
                 print(f"{category}: ${amount}")
         else:
             print("No expense entries.")
+
+def list_existing_categories(user_name):
+ # Load all user data to get categories from other users as well
+ user_data = load_user_data()
+ income_categories, expense_categories = get_all_categories(user_data)
+
+ print("\nExisting Income Categories:")
+ if income_categories:
+ print(", ".join(income_categories))
+ else:
+ print("No existing income categories.")
+
+ print("\nExisting Expense Categories:")
+ if expense_categories:
+ print(", ".join(expense_categories))
+ else:
+ print("No existing expense categories.")
 
 
 if __name__ == "__main__":
