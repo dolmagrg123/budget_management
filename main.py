@@ -1,6 +1,6 @@
 import json
 from models.user import User
-from utils.file_handler import load_user_data
+from utils.file_handler import FileHandler
 
 # We can use a match (which is like case in some other languages) instead of if-elif in Python 3.10 and later.
 # The match statement provides a more structured way to handle multiple conditions,
@@ -38,7 +38,7 @@ def main():
         elif choice == "5":
             # Exit the program
             print("Exiting Budget Manager. Data saved successfully.")
-            user.save_user_data()
+            FileHandler.save_user(user)
             break
 
         else:
@@ -120,7 +120,7 @@ def show_budget_option(user):
 
 def list_existing_categories(user_name):
     # Load all user data to get categories from other users as well
-    user_data = load_user_data()
+    user_data = FileHandler.load_user()
     income_categories, expense_categories = get_all_categories(user_data)
 
     print("\nExisting Income Categories:")
