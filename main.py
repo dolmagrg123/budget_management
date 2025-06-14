@@ -23,7 +23,7 @@ def main():
 
         choice = input("Select an option: ")
         if choice == "1":
-            list_existing_categories(user_name) # Added for context, but set_budget_option will not use the categories directly
+            list_existing_categories('budget') # Pass 'budget' to list only budget categories
             set_budget_option(user)
 
         elif choice == "2":
@@ -48,11 +48,11 @@ def get_all_categories(user_data):
     """
     Extracts all unique income and expense categories from the loaded user data.
 
-    Args:
-        user_data (dict): The loaded user data from user_data.json.
+ Args:
+ user_data (dict): The loaded user data from user_data.json.
 
-    Returns:
-        tuple: A tuple containing two sets: unique income categories and unique expense categories.
+ Returns:
+ tuple: A tuple containing two sets: unique income categories and unique expense categories.
     """
     income_categories = set()
     expense_categories = set()
@@ -77,6 +77,7 @@ def set_budget_option(user):
 
 def add_income_option(user):
     # Add income entry
+    list_existing_categories('income')
     category = input("Enter income category: ")
     try:
         amount = float(input("Enter income amount: "))
@@ -87,6 +88,7 @@ def add_income_option(user):
 
 def add_expense_option(user):
     # Add expense entry
+    list_existing_categories('expense')
     category = input("Enter expense category: ")
     try:
         amount = float(input("Enter expense amount: "))
@@ -118,22 +120,33 @@ def show_budget_option(user):
     else:
         print("No expense entries.")
 
-def list_existing_categories(user_name):
+def list_existing_categories(category_type):
     # Load all user data to get categories from other users as well
     user_data = FileHandler.load_user()
-    income_categories, expense_categories = get_all_categories(user_data)
+    all_income_categories, all_expense_categories = get_all_categories(user_data)
+    all_budget_categories = set()
+    for user_info in user_data.values():
+        if "budget" in user_info:
+            all_budget_categories.update(user_info["budget"].keys())
 
-    print("\nExisting Income Categories:")
-    if income_categories:
-        print(", ".join(income_categories))
-    else:
-        print("No existing income categories.")
-
-    print("\nExisting Expense Categories:")
-    if expense_categories:
-        print(", ".join(expense_categories))
-    else:
-        print("No existing expense categories.")
+    if category_type == 'budget':
+        print("\nExisting Budget Categories:")
+        if all_budget_categories:
+            print(", ".join(all_budget_categories))
+        else:
+            print("No existing budget categories.")
+    elif category_type == 'income':
+        print("\nExisting Income Categories:")
+        if all_income_categories:
+            print(", ".join(all_income_categories))
+        else:
+            print("No existing income categories.")
+    elif category_type == 'expense':
+        print("\nExisting Expense Categories:")
+        if all_expense_categories:
+            print(", ".join(all_expense_categories))
+        else:
+            print("No existing expense categories.")
 
 
 if __name__ == "__main__":

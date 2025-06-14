@@ -10,7 +10,7 @@
             "Clothing": 1000.0
         },
         "income": {
-            "Salary": 10000.0,
+            "Salary": 110000.0,
             "Freelance": 3500.0,
             "Investments": 300.0,
             "Interest": 500.0,
@@ -19,7 +19,7 @@
         "expense": {
             "Food": 410.0,
             "Rent": 750.0,
-            "Utilities": 100.0,
+            "Utilities": 250.0,
             "Entertainment": 50.0,
             "Transportation": 75.0,
             "Healthcare": 50.0
