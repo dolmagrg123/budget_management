@@ -1,7 +1,7 @@
 {
     "Dolma": {
         "budget": {
-            "Food": 10000.0,
+            "Food": 100.0,
             "Rent": 1200.0,
             "Entertainment": 300.0,
             "Transportation": 200.0,

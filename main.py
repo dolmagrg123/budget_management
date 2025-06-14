@@ -1,7 +1,9 @@
+import json
 from models.user import User
+from utils.file_handler import FileHandler
 
 # We can use a match (which is like case in some other languages) instead of if-elif in Python 3.10 and later.
-# The match statement provides a more structured way to handle multiple conditions, 
+# The match statement provides a more structured way to handle multiple conditions,
 # making the code more readable and potentially faster for larger sets of conditions.
 
 def main():
@@ -21,6 +23,7 @@ def main():
 
         choice = input("Select an option: ")
         if choice == "1":
+            list_existing_categories(user_name) # Added for context, but set_budget_option will not use the categories directly
             set_budget_option(user)
 
         elif choice == "2":
@@ -35,11 +38,30 @@ def main():
         elif choice == "5":
             # Exit the program
             print("Exiting Budget Manager. Data saved successfully.")
-            user.save_user_data()
+            FileHandler.save_user(user)
             break
-             
+
         else:
             print("Invalid choice. Please select a valid option.")
+
+def get_all_categories(user_data):
+    """
+    Extracts all unique income and expense categories from the loaded user data.
+
+    Args:
+        user_data (dict): The loaded user data from user_data.json.
+
+    Returns:
+        tuple: A tuple containing two sets: unique income categories and unique expense categories.
+    """
+    income_categories = set()
+    expense_categories = set()
+    for user_info in user_data.values():
+        if "income" in user_info:
+            income_categories.update(user_info["income"].keys())
+        if "expense" in user_info:
+            expense_categories.update(user_info["expense"].keys())
+    return income_categories, expense_categories
 
 
 def set_budget_option(user):
@@ -50,7 +72,7 @@ def set_budget_option(user):
         user.budget.set_budget(category, amount)
         print(f"Budget for {category} set to ${amount}")
     except ValueError:
-        print("Invalid amount. Please enter a valid number.")    
+        print("Invalid amount. Please enter a valid number.")
 
 
 def add_income_option(user):
@@ -74,27 +96,44 @@ def add_expense_option(user):
         print("Invalid amount. Please enter a valid number.")
 
 def show_budget_option(user):
-        # Show budget, income, and expenses
-        print("\nCurrent Budget:")
-        if user.budget.budgets:
-            for category, amount in user.budget.budgets.items():
-                print(f"{category}: ${amount}")
-        else:
-            print("No budget set.")
+    # Show budget, income, and expenses
+    print("\nCurrent Budget:")
+    if user.budget.budgets:
+        for category, amount in user.budget.budgets.items():
+            print(f"{category}: ${amount}")
+    else:
+        print("No budget set.")
 
-        print("\nIncome:")
-        if user.income:
-            for category, amount in user.income.items():
-                print(f"{category}: ${amount}")
-        else:
-            print("No income entries.")
+    print("\nIncome:")
+    if user.income:
+        for category, amount in user.income.items():
+            print(f"{category}: ${amount}")
+    else:
+        print("No income entries.")
 
-        print("\nExpenses:")
-        if user.expenses:
-            for category, amount in user.expenses.items():
-                print(f"{category}: ${amount}")
-        else:
-            print("No expense entries.")
+    print("\nExpenses:")
+    if user.expenses:
+        for category, amount in user.expenses.items():
+            print(f"{category}: ${amount}")
+    else:
+        print("No expense entries.")
+
+def list_existing_categories(user_name):
+    # Load all user data to get categories from other users as well
+    user_data = FileHandler.load_user()
+    income_categories, expense_categories = get_all_categories(user_data)
+
+    print("\nExisting Income Categories:")
+    if income_categories:
+        print(", ".join(income_categories))
+    else:
+        print("No existing income categories.")
+
+    print("\nExisting Expense Categories:")
+    if expense_categories:
+        print(", ".join(expense_categories))
+    else:
+        print("No existing expense categories.")
 
 
 if __name__ == "__main__":
