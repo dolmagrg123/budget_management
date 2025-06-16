@@ -7,8 +7,8 @@ class User:
     def __init__(self, name):
         self.name = name
         self.budget = Budget()  # Budget instance to store budget details
-        self.income = {}  # Dictionary to store income categories and amounts
-        self.expenses = {}  # Dictionary to store expense categories and amounts
+        self.income = [] #changing income into list
+        self.expenses = []  # List to store expense categories and amounts
 
         # Load existing data if available
         data = FileHandler.load_user()
