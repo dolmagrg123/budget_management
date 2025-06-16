@@ -108,15 +108,15 @@ def show_budget_option(user):
 
     print("\nIncome:")
     if user.income:
-        for category, amount in user.income.items():
-            print(f"{category}: ${amount}")
+        for income in user.income:
+            print(f"Category: {income.category}, Amount: ${income.amount}")
     else:
         print("No income entries.")
 
     print("\nExpenses:")
     if user.expenses:
-        for category, amount in user.expenses.items():
-            print(f"{category}: ${amount}")
+        for expense in user.expenses:
+            print(f"Category: {expense.category}, Amount: ${expense.amount}")
     else:
         print("No expense entries.")
 
