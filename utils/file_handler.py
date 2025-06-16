@@ -17,11 +17,15 @@ class FileHandler:
             with open(file_path, "r") as file:
                 users = json.load(file)
 
+        # Convert lists of transaction objects to lists of dictionaries for JSON serialization
+        income_data = [{"category": t.category, "amount": t.amount} for t in user.income]
+        expense_data = [{"category": t.category, "amount": t.amount} for t in user.expenses]
+
         # Add or update the user data
         users[user.name] = {
             "budget": user.budget.budgets,
-            "income": user.income,
-            "expense": user.expenses
+            "income": income_data,
+            "expense": expense_data
         }
 
         # Save the updated list of users to the file

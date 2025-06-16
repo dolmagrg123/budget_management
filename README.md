@@ -42,8 +42,8 @@ OR
 If you have docker installed:
 
 ```bash
-docker pull dolmagrg123/budget_app:v1.0
-docker run -it dolmagrg123/budget_app:v1.0
+docker pull dolmagrg123/budget_app:v2.0
+docker run -it dolmagrg123/budget_app:v2.0
 
 ```
 
