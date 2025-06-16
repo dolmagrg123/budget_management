@@ -107,18 +107,18 @@ def show_budget_option(user):
         print("No budget set.")
 
     print("\nIncome:")
-        if user.income:
-            for income in user.income:
-                print(f"Category: {income.category}, Amount: ${income.amount}")
-        else:
-            print("No income entries.")
+    if user.income:
+        for income in user.income:
+            print(f"Category: {income.category}, Amount: ${income.amount}")
+    else:
+        print("No income entries.")
 
     print("\nExpenses:")
-        if user.expenses:
-            for expense in user.expenses:
-                print(f"Category: {expense.category}, Amount: ${expense.amount}")
-        else:
-            print("No expense entries.")
+    if user.expenses:
+        for expense in user.expenses:
+            print(f"Category: {expense.category}, Amount: ${expense.amount}")
+    else:
+        print("No expense entries.")
 
 def list_existing_categories(category_type):
     # Load all user data to get categories from other users as well

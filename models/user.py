@@ -1,5 +1,6 @@
 from models.budget import Budget
 from utils.file_handler import FileHandler
+from models.transaction import Income, Expense # Import Income and Expense classes
 
 class User:
     """Class to manage user budget information"""
@@ -17,8 +18,13 @@ class User:
         user_data = data.get(self.name, None)
         if user_data:
             self.budget.budgets = user_data["budget"]
-            self.income = user_data["income"]
-            self.expenses = user_data["expense"]
+            # Load and convert aggregated income data to list of Income objects
+            if "income" in user_data:
+                for category, amount in user_data["income"].items():
+                    self.income.append(Income(category, amount))
+            if "expense" in user_data:
+                for category, amount in user_data["expense"].items():
+                    self.expenses.append(Expense(category, amount))
         else:
             print(f"User {self.name} does not exist, creating a new profile.")
 
@@ -30,8 +36,7 @@ class User:
     def add_expense(self, category, amount):
         """Add an expense entry."""
         if category not in self.budget.budgets:
-            print(f"Warning: No budget set for {category}.")  # Warn if budget not set for category
-        #add an expense if category exists:
+            print(f"Warning: No budget set for {category}.")  # Warn if budget not set for category        #add an expense if category exists:
         self.expenses.append(Expense(category, amount))
 
     def save_user_data(self):
