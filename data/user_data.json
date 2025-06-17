@@ -37,6 +37,10 @@
             {
                 "category": "Investments",
                 "amount": 200000.0
+            },
+            {
+                "category": "Investments",
+                "amount": 1000.0
             }
         ],
         "expense": [
