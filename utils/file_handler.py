@@ -37,6 +37,13 @@ class FileHandler:
         """Load user data from JSON file."""
         file_path = "data/user_data.json"
         if os.path.exists(file_path):
-            with open(file_path, "r") as file:
-                return json.load(file)
+            try:
+                with open(file_path, "r") as file:
+                    return json.load(file)
+            except json.JSONDecodeError:
+                print(f"Error: Could not decode JSON from {file_path}. File might be corrupted.")
+                return {} # Return empty dict or handle as appropriate
+            except Exception as e:
+                print(f"An unexpected error occurred while reading {file_path}: {e}")
+                return {}
         return {}  # Return an empty dict if no users are found
