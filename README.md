@@ -2,6 +2,24 @@
 
 This Budget Management Application allows users to track and manage their budgets, income, and expenses. The application provides a modular approach to personal finance management with data persistence, error handling, and scalability.
 
+## Table of Contents
+- [PURPOSE](#purpose)
+- [OBJECTIVES](#objectives)
+- [INSTALLATION](#installation)
+- [HOW TO PLAY](#how-to-play)
+  - [Command-Line Interface](#command-line-interface)
+  - [Web Interface (Recommended)](#web-interface-recommended)
+- [GAME MODES](#game-modes)
+- [SCORING SYSTEM](#scoring-system)
+- [THE STEPS TAKEN](#the-steps-taken-and-why-each-was-necessaryimportant)
+- [BACKEND-SYSTEM DESIGN DIAGRAM](#backend-system-design-diagram)
+- [OPTIMIZATION](#optimization)
+- [ISSUES & TROUBLESHOOTING](#issues-and-troubleshooting)
+- [API INTEGRATION](#api-integration)
+- [MONITORING & LOGGING](#monitoring--logging)
+- [VERSION HISTORY](#version-history)
+- [FUTURE ENHANCEMENTS](#Future-Enhancements)
+
 ## Features
 
 - **Budget Management**: Set and manage budgets for different categories (e.g., Food, Entertainment, etc.).
@@ -18,7 +36,121 @@ Ensure you have the following installed:
 - Python 3.x
 - `json` module (part of the Python standard library)
 
-## Installation
+## INSTALLATION
+
+### Prerequisites
+- Python 3.7 or higher (Windows)
+- Git (for cloning the repository)
+- Internet connection (for external API, optional)
+
+### Step 1: Install Python
+
+#### Windows
+1. **Download Python:**
+   - Visit [python.org/downloads](https://www.python.org/downloads/)
+   - Download the latest Python 3.x version (3.7 or higher)
+
+2. **Install Python:**
+   - Run the downloaded installer
+   - ⚠️ **IMPORTANT**: Check "Add Python to PATH" during installation
+   - Choose "Install Now" or customize installation as needed
+
+3. **Verify Installation:**
+   ```cmd
+   python --version
+   pip --version
+   ```
+
+#### macOS
+1. **Option A - Using Homebrew (Recommended):**
+   ```bash
+   # Install Homebrew if not already installed
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+   # Add Homebrew to your PATH
+   echo >> <PATH>
+   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> <PATH>
+   eval "$(/opt/homebrew/bin/brew shellenv)"
+
+   
+   # Install Python
+   brew install python
+   ```
+
+2. **Option B - Direct Download:**
+   - Visit [python.org/downloads](https://www.python.org/downloads/)
+   - Download and install the macOS installer
+
+3. **Verify Installation:**
+   ```bash
+   python3 --version
+   pip3 --version
+   ```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Update package list
+sudo apt update
+
+# Install Python and pip
+sudo apt install python3 python3-pip python3-venv
+
+# Verify installation
+python3 --version
+pip3 --version
+```
+
+#### Linux (CentOS/RHEL/Fedora)
+```bash
+# For CentOS/RHEL
+sudo yum install python3 python3-pip
+
+# For Fedora
+sudo dnf install python3 python3-pip
+
+# Verify installation
+python3 --version
+pip3 --version
+```
+
+### Step 2: Install Git
+
+#### Windows
+1. Download Git from [git-scm.com](https://git-scm.com/download/win)
+2. Run the installer with default settings
+3. Verify: `git --version` in Command Prompt
+
+#### macOS
+Download Git from [git-scm.com](https://git-scm.com/downloads/mac)
+
+```bash
+# Using Homebrew
+brew install git
+
+# Or use Xcode Command Line Tools
+xcode-select --install
+```
+
+#### Linux
+Download Git from [git-scm.com](https://git-scm.com/downloads/linux)
+
+```bash
+# Ubuntu/Debian
+sudo apt install git
+
+# CentOS/RHEL
+sudo yum install git
+
+# Fedora
+sudo dnf install git
+```
+
+### Step 3: Clone the Repository
+
+```bash
+git clone https://github.com/dolmagrg123/mastermind-challenge.git
+
+```
 
 1. Clone the repository:
 
