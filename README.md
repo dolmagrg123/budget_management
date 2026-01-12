@@ -3,9 +3,10 @@
 This Budget Management Application allows users to track and manage their budgets, income, and expenses. The application provides a modular approach to personal finance management with data persistence, error handling, and scalability.
 
 ## Table of Contents
-- [PURPOSE](#features)
+- [FEATURES](#features)
 - [PREREQUISITES](#prerequisites)
 - [INSTALLATION](#installation)
+- [USAGE](#usage)
 - [FILE STRUCTURE](#File-Structure)
 - [FUTURE ENHANCEMENT](#Future-Enhancements)
 ## Features
@@ -136,7 +137,7 @@ sudo dnf install git
 ### Step 3: Clone the Repository
 
 ```bash
-git clone https://github.com/dolmagrg123/mastermind-challenge.git
+git clone https://github.com/dolmagrg123/budget_management.git
 
 ```
 
