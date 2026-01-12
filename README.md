@@ -2,23 +2,6 @@
 
 This Budget Management Application allows users to track and manage their budgets, income, and expenses. The application provides a modular approach to personal finance management with data persistence, error handling, and scalability.
 
-## Table of Contents
-- [PURPOSE](#purpose)
-- [OBJECTIVES](#objectives)
-- [INSTALLATION](#installation)
-- [HOW TO PLAY](#how-to-play)
-  - [Command-Line Interface](#command-line-interface)
-  - [Web Interface (Recommended)](#web-interface-recommended)
-- [GAME MODES](#game-modes)
-- [SCORING SYSTEM](#scoring-system)
-- [THE STEPS TAKEN](#the-steps-taken-and-why-each-was-necessaryimportant)
-- [BACKEND-SYSTEM DESIGN DIAGRAM](#backend-system-design-diagram)
-- [OPTIMIZATION](#optimization)
-- [ISSUES & TROUBLESHOOTING](#issues-and-troubleshooting)
-- [API INTEGRATION](#api-integration)
-- [MONITORING & LOGGING](#monitoring--logging)
-- [VERSION HISTORY](#version-history)
-- [FUTURE ENHANCEMENTS](#Future-Enhancements)
 
 ## Features
 
