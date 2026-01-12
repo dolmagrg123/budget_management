@@ -2,7 +2,12 @@
 
 This Budget Management Application allows users to track and manage their budgets, income, and expenses. The application provides a modular approach to personal finance management with data persistence, error handling, and scalability.
 
-
+## Table of Contents
+- [PURPOSE](#features)
+- [PREREQUISITES](#prerequisites)
+- [INSTALLATION](#installation)
+- [FILE STRUCTURE](#File-Structure)
+- [FUTURE ENHANCEMENT](#Future-Enhancements)
 ## Features
 
 - **Budget Management**: Set and manage budgets for different categories (e.g., Food, Entertainment, etc.).
